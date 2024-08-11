@@ -21,19 +21,21 @@ fun main() {
             return
         }
     }
-    // Dosya içeriğini oku
+    // dosyayı oku
     val mevcutIcerik = dosya.readText()
 
-    // Metni belirli bir uzunlukta satırlara ayır
+    // metni belli bi uzunlukta satırlara ayır
     val satirUzunlugu = 80
     val satirlar = mevcutIcerik.chunked(satirUzunlugu)
 
-    // Güncellenmiş içeriği dosyaya yaz
+    // güncellenmiş içeriği dosyaya yaz
     dosya.writeText(satirlar.joinToString("\n"))
 
     while (true) {
         println("Aramak istediğiniz kelimeyi girin (çıkmak için 'çıkış' yazın): ")
         val anahtarKelime = readLine()?.trim()?.lowercase() ?: continue
+        /* burdaki ?trim(),readline() metodunun döndürdüğü değer null değilse kullanıcının yaptığı girişin
+        * başındakki ve sonundaki boşlukları kaldırır. null ise de bu işlemi atlıyor.*/
 
         if (anahtarKelime == "çıkış") break
 
@@ -57,7 +59,3 @@ fun main() {
     println("Program kapanıyor...")
 }
 
-fun kucukyap(metin: String): String
-{
-    return metin.lowercase()
-}
